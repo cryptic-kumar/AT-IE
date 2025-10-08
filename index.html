@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finite Automata: Elevator Control</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <h1>Finite Automata Elevator 🤖</h1>
+        
+        <div class="main-content">
+            <div class="building">
+                <div class="elevator-shaft">
+                    <div class="elevator-car" id="elevator-car">
+                        <div class="door left-door"></div>
+                        <div class="door right-door"></div>
+                    </div>
+                </div>
+                <div class="floors">
+                    <div class="floor" data-floor="3"><span>Floor 3</span></div>
+                    <div class="floor" data-floor="2"><span>Floor 2</span></div>
+                    <div class="floor" data-floor="1"><span>Floor 1</span></div>
+                    <div class="floor" data-floor="0"><span>Ground</span></div>
+                </div>
+            </div>
+
+            <div class="side-panel">
+                <div class="panel-section">
+                    <h2>Controls</h2>
+                    <div class="buttons">
+                        <button class="floor-btn" data-floor="3">3</button>
+                        <button class="floor-btn" data-floor="2">2</button>
+                        <button class="floor-btn" data-floor="1">1</button>
+                        <button class="floor-btn" data-floor="0">G</button>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h2>FA State Diagram</h2>
+                    <div class="state-diagram">
+                         <svg viewBox="0 0 400 300" id="fa-diagram">
+                            <g id="state-idle" class="state-node active">
+                                <circle cx="200" cy="50" r="35"></circle>
+                                <text x="200" y="55">Idle</text>
+                            </g>
+                            <g id="state-moving-up" class="state-node">
+                                <circle cx="50" cy="150" r="35"></circle>
+                                <text x="50" y="155">Moving Up</text>
+                            </g>
+                            <g id="state-moving-down" class="state-node">
+                                <circle cx="350" cy="150" r="35"></circle>
+                                <text x="350" y="155">Moving Down</text>
+                            </g>
+                            <g id="state-door-open" class="state-node">
+                                <circle cx="200" cy="250" r="35"></circle>
+                                <text x="200" y="255">Door Open</text>
+                            </g>
+                            
+                            <path class="transition-arrow" d="M175,75 Q100,100 75,125" marker-end="url(#arrow)"></path>
+                            <path class="transition-arrow" d="M225,75 Q300,100 325,125" marker-end="url(#arrow)"></path>
+                            <path class="transition-arrow" d="M75,175 Q150,200 175,225" marker-end="url(#arrow)"></path>
+                            <path class="transition-arrow" d="M325,175 Q250,200 225,225" marker-end="url(#arrow)"></path>
+                            <path class="transition-arrow" d="M200,215 V85" marker-end="url(#arrow)"></path>
+                            
+                            <defs>
+                                <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#333"></path>
+                                </marker>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h2>Logs</h2>
+                    <div id="log-display" class="log-display">
+                        <p>Welcome! Press a floor button.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
